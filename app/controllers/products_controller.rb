@@ -6,8 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
-    puts @product
+    @product = Product.find(params[:id])    
   end
 
   def edit
@@ -15,8 +14,16 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(set_params)
-    redirect_to "/products/#{@product.id}"
+    @product = Product.new(set_params)
+    respond_to do |format|
+     if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def new
@@ -25,14 +32,14 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update_attributes(set_params)
-    redirect_to product_path
+    @product.update(set_params)
+    redirect_to "/products/#{@product.id}"
   end
 
   def destroy
     @product=Product.find(params[:id])
     @product.destroy
-    redirect_to products_path
+    redirect_to "/products"
   end
 
 

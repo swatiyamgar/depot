@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :products 
+  get 'store/index'
+  
+  resources :products
+
+  root 'store#index', as:'store'
+
+  resources :carts
+
+  resources :lineitems
+
   #get '/products/new', to:'products#new'
   #post 'products/create',to: 'products#create'
   #get '/products', to: 'products#index'
