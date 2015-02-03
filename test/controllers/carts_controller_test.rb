@@ -6,7 +6,7 @@ class CartsControllerTest < ActionController::TestCase
   # end
 
   test 'should destroy cart' do
-	  assert_difference('Cart.count', -1) do
+	  assert_difference('Cart.count', 0) do
 	  	@cart=Cart.create
 	  	session[:cart_id] = @cart.id
 	  	delete :destroy, id: @cart

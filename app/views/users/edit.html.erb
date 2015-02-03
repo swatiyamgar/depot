@@ -1,0 +1,20 @@
+<%= form_for(@user,:url=>{ action: 'update' })do |f| %>
+<fieldset>
+        <legend>Enter User Details</legend>
+        <div class="field">
+            <%= f.label :name, 'Name:' %>
+            <%= f.text_field :name, size: 40 %>
+        </div>
+        <div class="field">
+            <%= f.label :password, 'Old Password:' %>
+            <%= f.password_field :password, size: 40 %>
+        </div>
+        <div class="field">
+            <%= f.label :new_password, 'New Password:' %>
+            <%= f.password_field :new_password, size: 40 %>
+        </div>
+        <div class="actions">
+            <%= f.submit "Update" %>
+        </div>
+    </fieldset>
+<% end %>

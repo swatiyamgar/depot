@@ -20,6 +20,9 @@
 <p><b> Img_url: </b></br><%=f.text_field :image_url %> </p>
 
 <p><b> Price: </b></br><%=f.text_field :price %> </p>
+<p><b> Locale: </b></br><%= f.check_box  :locale%> es
+                 <%= f.check_box :locale%> en </p>
+
 
 <p><%= f.submit "Create Product" %> </p>
  <%end %>

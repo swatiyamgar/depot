@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -16,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,7 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -34,8 +36,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
 
+  #gem "guard-rspec", "~> 0.7.0"
+  gem 'rspec-rails', '~> 3.1.0'
+  #gem 'factory_girls_rails', '~> 3.2.0'
+  #gem 'factory_girl', '~> 4.5.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'guard-rspec', '~> 4.5.0'
+  gem 'byebug'
+  gem 'shoulda'
+
+  #gem 'shoulda-matchers'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -43,3 +54,13 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'faker', '~> 1.4.3'
+  gem 'capybara', '~> 2.4.4'
+  gem 'database_cleaner', '~> 1.4.0'
+  gem 'launchy', '~> 2.4.3'
+  gem 'email_spec'
+  #gem 'shoulda-matchers', require: false
+  #    gem "database_cleaner", "~> 0.7.2"
+  #    gem "launchy","~> 2.1.0"
+end

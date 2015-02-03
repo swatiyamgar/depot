@@ -13,7 +13,15 @@
 </p>
 
 <p>
-<b>Price: </b> <%=@product.price%>
+<% if I18n.locale.to_s == "es" %>
+	<b>Price: </b> <%=@product.price * 0.88%>
+<%else %>
+	<b>Price: </b> <%=@product.price%>
+<% end %>
+</p>
+
+<p>
+<b>Locale: </b> <%=@product.locale%>
 </p>
 
 <p>

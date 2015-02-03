@@ -26,6 +26,15 @@ module Depot
     config.autoload_paths += %W(#{config.root}/app/controllers/concerns)
     #config.i18n.enforce_available_locales = false
     #I18n.config.enforce_available_locales = true
-    
+    config.generators do |g|
+        g.test_framework :rpsec,
+            fixtures: true,
+            view_specs: false,
+            helper_specs: false,
+            routing_specs: false,
+            controller_specs: true,
+            request_specs: true
+        g.fixture_replacement :factory_girl, dir: 'spec/factories'
+    end
   end
 end

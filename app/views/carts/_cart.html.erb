@@ -1,0 +1,25 @@
+
+<% unless cart.line_items.empty? %>
+	<h1><%= t('.title') %></h1>
+	<table>
+
+		<%= render (cart.line_items) %>
+		<tr class = "total_line">
+			<td colspan = " 2">Total</td>
+			<% if I18n.locale.to_s == "es" %>
+				<td class = "total_cell"> <%= number_to_currency((cart.total_price)*0.88) %> </td>
+			<% else %>
+				<td class = "total_cell"> <%= number_to_currency(cart.total_price) %> </td>
+			<% end %>
+		</tr>
+	</table>
+
+	<% unless (current_page?('/orders/new')) %>
+	  <%= button_to t('.checkout'), new_order_path, method: :get %>
+	<% else %>
+	  <%= button_to t('.checkout'), new_order_path, method: :get, disabled: true %>
+	<% end %>
+
+
+	<%= button_to t('.empty'), cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
